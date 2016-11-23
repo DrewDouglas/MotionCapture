@@ -153,6 +153,7 @@ int CBodyBasics::Run(HINSTANCE hInstance, int nCmdShow)
 /// </summary>
 void CBodyBasics::Update()
 {
+	//Need to process multiple body frames here after initializing both devices 
     if (!m_pBodyFrameReader)
     {
         return;
@@ -267,6 +268,9 @@ LRESULT CALLBACK CBodyBasics::DlgProc(HWND hWnd, UINT message, WPARAM wParam, LP
 /// <returns>indicates success or failure</returns>
 HRESULT CBodyBasics::InitializeDefaultSensor()
 {
+	/*
+	Change this function to initialize two different sensors (I think)
+	*/
     HRESULT hr;
 
     hr = GetDefaultKinectSensor(&m_pKinectSensor);
@@ -406,6 +410,9 @@ void CBodyBasics::ProcessBody(INT64 nTime, int nBodyCount, IBody** ppBodies)
             m_nFramesSinceUpdate = 0;
         }
     }
+	/* 
+	Should include something here to write the body data to a file if that isn't alread done. Will have to test with the equipment first 
+	*/
 }
 
 /// <summary>
